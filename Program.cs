@@ -10,6 +10,7 @@ namespace ChatBot
     {
         static void Main(string[] args)
         {
+            // Hi my name is Chloe, and this is my first commit
         }
     }
 }
