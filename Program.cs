@@ -10,22 +10,36 @@ namespace ChatBot
     {
         static void Main(string[] args)
         {
-            // Hi my name is Chloe, and this is my first commit
-            Console.WriteLine("Hi, I am VC chatbot. What is your name?");
-            Console.WriteLine("");
-            string username = Console.ReadLine();
-            Console.WriteLine("");
-            Console.WriteLine("Hello " + username+"! I hope you are well. How can I help you?");
 
-            string text = Console.ReadLine();
+            Console.ForegroundColor = ConsoleColor.Cyan;
 
-            if (text.Contains("cybersecurity"))
-            {
-                Console.WriteLine("Cybersecurity is the staple of the online world.");
-            }
-            else {
-                Console.WriteLine("Goodbye...");
-            }
+            Console.WriteLine("===========================================");
+            Console.WriteLine("    CYBERSECURITY AWARENESS CHATBOT v1.0  ");
+            Console.WriteLine("===========================================");
+            Console.WriteLine();
+            Console.WriteLine("          [###########]");
+            Console.WriteLine("         [#  ^     ^  #]");
+            Console.WriteLine("         [#    ---    #]   <-- Hello! I'm your");
+            Console.WriteLine("         [#   \\___/   #]       CyberSecureBot!");
+            Console.WriteLine("          [###########]");
+            Console.WriteLine("             |||||");
+            Console.WriteLine("        _____|||||_____");
+            Console.WriteLine("       |               |");
+            Console.WriteLine("       |   Stay Safe   |");
+            Console.WriteLine("       |   Online!     |");
+            Console.WriteLine("       |_______________|");
+            Console.WriteLine();
+            Console.WriteLine(" Tips: ");
+            Console.WriteLine(" - Don't click unknown links");
+            Console.WriteLine(" - Use strong passwords");
+            Console.WriteLine(" - Keep your software updated");
+            Console.WriteLine();
+            Console.WriteLine("===========================================");
+            Console.ResetColor();
+
+            // CALL AUDIO FILE
+            // PLAY AUDIO FILE
+            CyberBot.StartChat();
         }
     }
 }
