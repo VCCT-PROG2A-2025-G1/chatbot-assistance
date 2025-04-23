@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Media;
 
 namespace ChatBot
 {
@@ -36,6 +37,12 @@ namespace ChatBot
             Console.WriteLine();
             Console.WriteLine("===========================================");
             Console.ResetColor();
+
+            // Initialize the SoundPlayer with the path to the .wav file
+            string filePath = @"C:\Users\chloe\Source\Repos\chatbot-assistance\audio-greeting.wav"; // File in the root of the project
+            SoundPlayer player = new SoundPlayer(filePath);
+            player.Load();// Load the file
+            player.Play();// Play the audio
 
             CyberBot.StartChat();//start application
         }
