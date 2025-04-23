@@ -34,6 +34,8 @@ namespace ChatBot
                 Console.WriteLine("2. Password Safety");
                 Console.WriteLine("3. Baiting attacks");
                 Console.WriteLine("4. Phishing Attakcs");
+                Console.WriteLine("5. Safe Browsing");
+
                 Console.WriteLine("\nYour choice: ");
 
                 string input = Console.ReadLine();
@@ -55,6 +57,10 @@ namespace ChatBot
                     case "4":
                         PhyshingAttacks.Run();
                         break;
+                    case "5":
+                        SafeBrowsing.Run();
+                        break;
+
                     default:
                         Console.WriteLine("Invalid choice. Restarting...\n");
                         StartChat();
