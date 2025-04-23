@@ -11,7 +11,7 @@ namespace ChatBot
         static void Main(string[] args)
         {
 
-            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
 
             Console.WriteLine("===========================================");
             Console.WriteLine("    CYBERSECURITY AWARENESS CHATBOT v1.0  ");
@@ -37,8 +37,6 @@ namespace ChatBot
             Console.WriteLine("===========================================");
             Console.ResetColor();
 
-            // CALL AUDIO FILE
-            // PLAY AUDIO FILE
             CyberBot.StartChat();
         }
     }
