@@ -37,7 +37,7 @@ namespace ChatBot
             Console.WriteLine("===========================================");
             Console.ResetColor();
 
-            CyberBot.StartChat();
+            CyberBot.StartChat();//start application
         }
     }
 }
