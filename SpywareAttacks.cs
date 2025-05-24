@@ -1,9 +1,22 @@
-﻿using System;
+﻿// St10082707 Mohlao Makhale
+// References: 
+// https://www.youtube.com/watch?v=BstOEzntT1hQzk&lsist=LL&ingdenx=sd1&t=1294s
+// https://learn.microsoft.com/en-us/dotnet/desktop/winf/advanced/how-to-windows-form?view=netframeworkdesktop-4.8
+// https://learn.microsoft.com/en-us/dotnet/api/system.graphics?view=windowsdesktop
+
+using System;
 
 namespace ChatBot
 {
+    /// <summary>
+    /// Provides chatbot dialogue and education about spyware attacks.
+    /// </summary>
     internal class SpywareAttacks
     {
+        /// <summary>
+        /// Starts the spyware conversation with the user.
+        /// </summary>
+        /// <param name="username">The user's name.</param>
         public static void Run(string username)
         {
             Console.WriteLine($"\nCHATTY BOT:\nHey {username}, have you ever heard of Spyware attacks? (yes/no): ");
@@ -13,36 +26,47 @@ namespace ChatBot
 
             if (answer == "yes")
             {
-                Console.WriteLine($"\nCHATTY BOT:\nLooks like you're well informed {username}!");
-                Console.ReadLine();
+                Console.WriteLine($"\nCHATTY BOT:\nLooks like you're well informed {username}!")
+                Console.WriteLine("press Enter to continue");
             }
             else if (answer == "no")
             {
-                Console.WriteLine("\nCHATTY BOT:");
-                Console.WriteLine("\nSpyware is a malicious software that secretly collects your personal info and sends it to third parties without your permission.");
-                Console.WriteLine("It does this by tracking your internet habits, stealing your login info, and recording your keystrokes.");
-                Console.ReadLine();
+                Console.WriteLine("\nCHATTY BOT:\nSpyware is malicious software that secretly collects your personal info and sends it to third parties without permission.");
+                Console.WriteLine("It can track your habits, steal login info, and even record your keystrokes.");
             }
             else
             {
-                Console.WriteLine($"\nCHATTY BOT:\nAwesome {username}, this knowledge helps you stay safer online!");
-                Console.ReadLine();
+                Console.WriteLine($"\nCHATTY BOT:\nLet’s still go over the basics to help you stay safer online!");
             }
 
-            Console.WriteLine($"\nCHATTY BOT:\nWould you like a fun fact about spyware? (yes/no): ");
+            // Follow-up: Want a tip?
+            Console.WriteLine($"\nCHATTY BOT:\nWould you like a safety tip for avoiding spyware? (yes/no): ");
+            Console.WriteLine($"\n{username?.ToUpper()}:");
+            string tip = Console.ReadLine()?.ToLower();
+            CyberBot.invalidInput(tip);
+
+            if (tip == "yes")
+            {
+                Console.WriteLine("\nCHATTY BOT:\nAlways install reputable antivirus software and avoid downloading unknown files.");
+            }
+            else
+            {
+                Console.WriteLine("\nCHATTY BOT:\nNo problem! Just stay cautious with unknown links and downloads.");
+            }
+
+            // Fun fact
+            Console.WriteLine($"\nCHATTY BOT:\nWant to hear a fun fact about spyware? (yes/no): ");
             Console.WriteLine($"\n{username?.ToUpper()}:");
             string factAnswer = Console.ReadLine()?.ToLower();
             CyberBot.invalidInput(factAnswer);
 
             if (factAnswer == "yes")
             {
-                Console.WriteLine("\nCHATTY BOT:\nOver 90% of computers are infected with some type of spyware, adware, or virus.");
-                Console.ReadLine();
+                Console.WriteLine("\nCHATTY BOT:\nOver 90% of computers have been exposed to some kind of spyware at some point.");
             }
             else
             {
-                Console.WriteLine("\nCHATTY BOT:\nCool, hope this info was helpful!");
-                Console.ReadLine();
+                Console.WriteLine("\nCHATTY BOT:\nAlright! Glad we had this chat.");
             }
         }
     }
