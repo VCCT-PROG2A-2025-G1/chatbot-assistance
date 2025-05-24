@@ -2,9 +2,16 @@
 
 namespace ChatBot
 {
+    /// <summary>
+    /// Provides chatbot dialogue and guidance on safe web browsing practices.
+    /// </summary>
     internal class SafeBrowsing
     {
-        public static void Run(String username)
+        /// <summary>
+        /// Starts the safe browsing conversation.
+        /// </summary>
+        /// <param name="username">The user's name.</param>
+        public static void Run(string username)
         {
             Console.WriteLine("\nCHATTY BOT:\nAre you in the habit of checking if websites are secure before entering info? (yes/no): ");
             Console.WriteLine($"\n{username}:");
@@ -19,6 +26,8 @@ namespace ChatBot
             else if (answer == "no")
             {
                 Console.WriteLine("\nCHATTY BOT:\nIt’s super important! Secure sites keep your data safe from hackers.");
+
+                // Offer a tip if user wants one
                 Console.WriteLine("\nWould you like a browsing safety tip? (yes/no): ");
                 Console.WriteLine($"\n{username}:");
                 string tip = Console.ReadLine()?.ToLower();
