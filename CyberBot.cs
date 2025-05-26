@@ -6,83 +6,32 @@ namespace ChatBot
     {
         public static void StartChat()
         {
+            Console.WriteLine("CHATTY BOT:\nHi there! What's your name?");
+            Console.Write("\nYou: ");
+            UserProfile.Name = Console.ReadLine();
 
-            Console.WriteLine("\nAI:\nHi there and welcome. What is your name ?");
-            Console.WriteLine("\nUSER:");
-            string username = Console.ReadLine();// read user input
+            Console.WriteLine($"\nCHATTY BOT:\nNice to meet you, {UserProfile.Name}! What's your favorite cybersecurity topic? (Spyware, Phishing, Safe Browsing)");
+            Console.Write($"\n{UserProfile.Name}: ");
+            UserProfile.FavoriteTopic = Console.ReadLine()?.ToLower();
 
-            // capitalise first character of string 'username'
-            // make the rest of the string 'username' lowercase
-            username = char.ToUpper(username[0]) + username.Substring(1).ToLower();
+            Console.WriteLine($"\nCHATTY BOT:\nAwesome! I’ll try to include some tips on {UserProfile.FavoriteTopic} later.");
 
-            invalidInput(username);// validate user input
+            Console.Clear();
 
-            Console.WriteLine("\nAI:\nHow are you doing " + username + "?");
-            Console.WriteLine("\n"+username?.ToUpper() + ":");
-            string answer = Console.ReadLine();// read user input
+            // Run topic modules
+            SpywareAttacks.Run(UserProfile.Name);
+            PhishingAttacks.Run(UserProfile.Name);
+            SafeBrowsing.Run(UserProfile.Name);
 
-            invalidInput(answer);
-
-            // if user types keywords like 'bad', 'not good', 'not okay
-            if (answer.ToLower().Contains("bad") || answer.ToLower().Contains("not good") || answer.ToLower().Contains("not okay") || answer.ToLower().Contains("not fine"))
-            {
-                // print the following
-                Console.WriteLine("\nAI:\nOh no! I am sorry. I'd advise you seek professional help.");
-                Console.ReadLine();// prevents application from closing
-            }
-            else if (answer.ToLower().Contains("good") || answer.ToLower().Contains("okay") || answer.ToLower().Contains("well") || answer.ToLower().Contains("Fine"))
-            {
-                Console.WriteLine("\nCHATTY BOT:\nI'm happy to hear that " + username + ". My name is Chatty Bot. \nLet's chat about CyberSecurity.\nPick a topic below by typing out the number:");
-
-                Console.WriteLine("\n1. Spyware attacks");
-                Console.WriteLine("2. Password Safety");
-                Console.WriteLine("3. Phishing Attakcs");
-                Console.WriteLine("4. Safe Browsing");
-
-                Console.WriteLine("\n"+username+":");
-
-                string input = Console.ReadLine();// take user input
-
-                invalidInput(input);
-
-                switch (input)
-                {
-                    case "1":// if user types 1, run SpywareAttacks
-                        SpywareAttacks.Run(username);
-                        break;// program exits once SpywareAttacks is finished
-                    case "2":
-                        PasswordSafety.Run(username);
-                        break;
-                    case "3":
-                        PhyshingAttacks.Run(username);
-                        break;
-                    case "4":
-                        SafeBrowsing.Run(username);
-                        break;
-
-                    default:
-                        Console.WriteLine("Invalid choice. Restarting...\n");
-                        StartChat();// restarts the whole program
-                        break;
-                }
-            }
-            else
-            {
-                Console.WriteLine("\nAI:\nHmmmm... I can't seem to understand your prompt.");
-                Console.ReadLine();
-            }
+            Console.WriteLine($"\nCHATTY BOT:\nThat’s all for now, {UserProfile.Name}. Stay safe online and keep learning more about {UserProfile.FavoriteTopic}!");
         }
 
-        // function for validating user input
         public static void invalidInput(string input)
         {
-            if (input == null || input == " " || input == "" || input.Length == 0)
+            if (input != "yes" && input != "no")
             {
-                Console.WriteLine("\nAI:\nInvalid response provided. Goodbye...");
-                Console.ReadLine();
-                Environment.Exit(0);
+                Console.WriteLine("\nCHATTY BOT:\nHmm, I didn’t get that. Just say 'yes' or 'no'.");
             }
         }
     }
-
 }
