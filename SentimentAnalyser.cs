@@ -3,7 +3,7 @@ public static class SentimentAnalyzer
 {
     //------------------------------------------------------------------------------------------------------------------------//
     /// <summary>
-    /// Start/
+    /// Sentiment detection applied in this method
     /// </summary>
     public static string DetectSentiment(string input)
     {
@@ -17,7 +17,7 @@ public static class SentimentAnalyzer
 
         return "neutral";
     }
-
+    //chatbot reads out the following according to the mood of the user
     public static void RespondToSentiment(string sentiment)
     {
         switch (sentiment)
@@ -37,7 +37,7 @@ public static class SentimentAnalyzer
         }
     }
 }
-
+//error handler
 public static class InputHelper
 {
     public static string GetValidResponse(string prompt, List<string> validOptions)
