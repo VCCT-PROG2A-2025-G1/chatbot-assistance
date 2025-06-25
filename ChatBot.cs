@@ -1,5 +1,7 @@
 ﻿using System;
-
+//ST10082707
+// Mohlao Makhale
+// BCAD2 GR 1
 namespace ChatBot
 {
     public class ChatBot
@@ -28,7 +30,8 @@ namespace ChatBot
             }
         }
 
-        private void Respond(string userInput)
+        // Changed from private to public so other classes can access it
+        public void Respond(string userInput)
         {
             if (userInput.ToLower().Contains("phishing"))
                 Console.WriteLine("Phishing is a scam where attackers trick you into giving up personal info.");

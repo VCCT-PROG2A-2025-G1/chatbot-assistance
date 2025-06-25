@@ -1,28 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Media;
-
+//ST10082707
+// Mohlao Makhale
+// BCAD2 GR 1
 namespace ChatBot
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-
+            // Set console color for branding
             Console.ForegroundColor = ConsoleColor.DarkCyan;
 
+            // Display welcome ASCII art and safety tips
             Console.WriteLine("===========================================");
             Console.WriteLine("    CYBERSECURITY AWARENESS CHATBOT v1.0  ");
             Console.WriteLine("===========================================");
             Console.WriteLine();
-            Console.WriteLine("          [###########]");
+            Console.WriteLine("         [###########]");
             Console.WriteLine("         [#  ^     ^  #]");
             Console.WriteLine("         [#    ---    #]   <-- Hello! I'm your");
             Console.WriteLine("         [#   \\___/   #]       CyberSecureBot!");
-            Console.WriteLine("          [###########]");
+            Console.WriteLine("         [###########]");
             Console.WriteLine("             |||||");
             Console.WriteLine("        _____|||||_____");
             Console.WriteLine("       |               |");
@@ -38,13 +37,23 @@ namespace ChatBot
             Console.WriteLine("===========================================");
             Console.ResetColor();
 
-            // Initialize the SoundPlayer with the path to the .wav file
-            string filePath = @"C:\Users\chloe\Source\Repos\chatbot-assistance\audio-greeting.wav"; // File in the root of the project
-            SoundPlayer player = new SoundPlayer(filePath);
-            player.Load();// Load the file
-            player.Play();// Play the audio
+            try
+            {
+                string filePath = @"C:\Users\chloe\Source\Repos\chatbot-assistance\audio-greeting.wav";
+                SoundPlayer player = new SoundPlayer(filePath);
+                player.Load();
+                player.Play();
+            }
+            catch (System.IO.FileNotFoundException)
+            {
+                Console.WriteLine("CHATTY BOT:\nAudio greeting file not found. Skipping sound...");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"CHATTY BOT:\nAn error occurred while playing the greeting: {ex.Message}");
+            }
+            CyberBot.StartChat();
 
-            CyberBot.StartChat();//start application
         }
     }
 }

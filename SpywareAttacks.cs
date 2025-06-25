@@ -1,8 +1,8 @@
-﻿// St10082707 Mohlao Makhale
+﻿using ChatBot;
+// St10082707 Mohlao Makhale
 // References: 
-// https://www.youtube.com/watch?v=BstOEzntT1hQzk&lsist=LL&ingdenx=sd1&t=1294s
-// https://learn.microsoft.com/en-us/dotnet/desktop/winf/advanced/how-to-windows-form?view=netframeworkdesktop-4.8
-// https://learn.microsoft.com/en-us/dotnet/api/system.graphics?view=windowsdesktop
+//https://www.fortinet.com/resources/cyberglossary/spyware
+//https://renogeek.com/7-facts-about-spyware/
 
 using System;
 
@@ -26,8 +26,8 @@ namespace ChatBot
 
             if (answer == "yes")
             {
-                Console.WriteLine($"\nCHATTY BOT:\nLooks like you're well informed {username}!")
-                Console.WriteLine("press Enter to continue");
+                Console.WriteLine($"\nCHATTY BOT:\nLooks like you're well informed {username}!");
+                Console.WriteLine("press Enter to continue");  // why isnt this showing when i run
             }
             else if (answer == "no")
             {

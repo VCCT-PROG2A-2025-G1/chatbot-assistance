@@ -1,5 +1,5 @@
 ﻿READ ME PART 2
-
+Powerpoint presentation included in folder
 
 # Chatbot Assistance – Cyber Security Awareness Chatbot  
 **Module**: PROG6221 – Part 2A POE  

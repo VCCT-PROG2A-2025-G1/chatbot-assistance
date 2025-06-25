@@ -2,13 +2,13 @@
 // References:
 // 
 using System;
-
+using ChatBot;
 namespace ChatBot
 {
     /// <summary>
     /// Provides chatbot dialogue and warnings about phishing attacks.
     /// </summary>
-    internal class PhyshingAttacks
+    internal class PhishingAttacks
     {
         /// <summary>
         /// Starts the phishing awareness conversation with the user.
@@ -35,7 +35,7 @@ namespace ChatBot
                 Console.WriteLine("Phishing is a cyber attack where criminals pretend to be trustworthy sources to trick you.");
             }
 
-            // Follow-up: More detail?
+            // Follow-up
             Console.WriteLine("\nCHATTY BOT:\nWould you like to learn how to spot a phishing email? (yes/no): ");
             Console.WriteLine($"\n{username}:");
             string detail = Console.ReadLine()?.ToLower();
