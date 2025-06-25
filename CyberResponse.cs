@@ -7,9 +7,8 @@ namespace ChatBot
     {
         //------------------------------------------------------------------------------------------------------------------------//
         /// <summary>
-        /// Method to keep keywords and specific responses
+        /// Handles keyword recognition, random cybersecurity tips, and personalisation.
         /// </summary>
-        /// <param name="username">Current user’s name</param>
         //------------------------------------------------------------------------------------------------------------------------//
 
         private static readonly Dictionary<string, List<string>> keywordResponses = new Dictionary<string, List<string>>()
@@ -45,12 +44,34 @@ namespace ChatBot
                     "Don’t trust calls or emails asking for your bank info.",
                     "Scammers often impersonate real companies — always double-check."
                 }
+            },
+            {
+                "2fa", new List<string>()
+                {
+                    "Two-factor authentication adds a layer of security to your accounts.",
+                    "Always enable 2FA on services that support it—it's an extra wall against hackers."
+                }
+            },
+            {
+                "safe browsing", new List<string>()
+                {
+                    "Safe browsing means thinking twice before clicking on suspicious links.",
+                    "Use secure, updated browsers and check for HTTPS before logging in anywhere."
+                }
             }
         };
 
         public static void HandleInput(string input)
         {
             input = input.ToLower();
+
+            // ✅ Memory recall command
+            if (input.Contains("what do you remember"))
+            {
+                Console.WriteLine($"CHATTY BOT:\nYou’re {UserProfile.Name} and you're interested in {UserProfile.FavoriteTopic}. I'm glad you're back!");
+                return;
+            }
+
             bool foundKeyword = false;
 
             foreach (var entry in keywordResponses)
@@ -62,13 +83,20 @@ namespace ChatBot
                     Random rand = new Random();
                     int index = rand.Next(responses.Count);
                     Console.WriteLine($"\nCHATTY BOT:\n{responses[index]}");
+
+                    // ✅ Add personalisation based on favorite topic
+                    if (!string.IsNullOrWhiteSpace(UserProfile.FavoriteTopic) && input.Contains(UserProfile.FavoriteTopic))
+                    {
+                        Console.WriteLine($"CHATTY BOT:\nAs someone interested in {UserProfile.FavoriteTopic}, you're asking the right questions!");
+                    }
+
                     break;
                 }
             }
 
             if (!foundKeyword)
             {
-                Console.WriteLine("\nCHATTY BOT:\nI didn’t quite catch that. Try asking about passwords, phishing, scams or privacy.");
+                Console.WriteLine("\nCHATTY BOT:\nI didn’t quite catch that. Try asking about passwords, phishing, scams, 2FA, or safe browsing.");
             }
         }
     }
