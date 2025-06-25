@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace ChatBot
 {
@@ -15,6 +16,7 @@ namespace ChatBot
             UserProfile.FavoriteTopic = Console.ReadLine()?.ToLower();
 
             Console.WriteLine($"\nCHATTY BOT:\nAwesome! I’ll try to include some tips on {UserProfile.FavoriteTopic} later.");
+            Thread.Sleep(800);
 
             // Ask for sentiment-based intro
             Console.WriteLine($"\nCHATTY BOT:\nBefore we begin, how are you feeling about cybersecurity today?");
@@ -22,9 +24,9 @@ namespace ChatBot
             string moodInput = Console.ReadLine();
             string detectedSentiment = SentimentAnalyzer.DetectSentiment(moodInput);
             SentimentAnalyzer.RespondToSentiment(detectedSentiment);
+            Thread.Sleep(800);
 
-            // Enter question-and-answer loop with ChatBot
-            ChatBot bot = new ChatBot();
+            // Begin question-and-answer loop
             Console.WriteLine($"\nCHATTY BOT:\nYou can now ask me anything about cybersecurity! Type 'next' when you're ready to move on.");
             while (true)
             {
@@ -40,19 +42,41 @@ namespace ChatBot
                 if (input.ToLower() == "next")
                 {
                     Console.WriteLine("CHATTY BOT:\nAlright! Let's go through a few short lessons.");
+                    Thread.Sleep(800);
                     break;
                 }
 
-                bot.Respond(input); // Now accessible!
+                CyberResponse.HandleInput(input);
+                Thread.Sleep(800);
             }
 
-            // Clear screen and run educational modules
+            // Educational modules
             Console.Clear();
             SpywareAttacks.Run(UserProfile.Name);
+            Thread.Sleep(800);
             PhishingAttacks.Run(UserProfile.Name);
+            Thread.Sleep(800);
             SafeBrowsing.Run(UserProfile.Name);
+            Thread.Sleep(800);
 
             Console.WriteLine($"\nCHATTY BOT:\nThat’s all for now, {UserProfile.Name}. Stay safe online and keep learning more about {UserProfile.FavoriteTopic}!");
+        }
+
+        /// <summary>
+        /// Validates user input for blank or odd values.
+        /// </summary>
+        public static void invalidInput(string input)
+        {
+            if (string.IsNullOrWhiteSpace(input))
+            {
+                Console.WriteLine("CHATTY BOT:\nOops! You didn’t enter anything. Please try again.");
+                Thread.Sleep(500);
+            }
+            else if (input.Length < 2 && !char.IsLetterOrDigit(input[0]))
+            {
+                Console.WriteLine("CHATTY BOT:\nThat doesn't look like a valid answer.");
+                Thread.Sleep(500);
+            }
         }
     }
 }
